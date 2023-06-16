@@ -38,6 +38,20 @@
                 <span style="color: #ff0000;">[{{ error }}]</span>
                 {% endfor %}
             </p>
+            <p>
+                {{ form.number_of_rooms.label }}<br>
+                {{ form.number_of_rooms(size=32) }}<br>
+                {% for error in form.number_of_rooms.errors %}
+                <span style="color: #ff0000;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.caution_deposit.label }}<br>
+                {{ form.caution_deposit(size=32) }}<br>
+                {% for error in form.caution_deposit.errors %}
+                <span style="color: #ff0000;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
             <p>{{ form.submit() }}</p>
         </form>
     </div>

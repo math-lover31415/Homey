@@ -58,7 +58,8 @@ def dashboard():
 def add():
     form = HouseForm()
     if form.validate_on_submit():
-        house = House(name=form.name.data, address=form.address.data, remarks=form.remarks.data, rent=int(form.rent.data), owner=current_user.id)
+        house = House(name=form.name.data, address=form.address.data, remarks=form.remarks.data, rent=int(form.rent.data),\
+                      number_of_rooms=form.number_of_rooms.data, owner=current_user.id, caution_deposit=form.caution_deposit.data)
         db.session.add(house)
         db.session.commit()
         flash("House added")

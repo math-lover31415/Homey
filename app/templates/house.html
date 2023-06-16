@@ -33,6 +33,14 @@
                     <td><span class="book_info">{{ house.rent }}</span></td>
                 </tr>
                 <tr>
+                    <td>Caution Deposit</td>
+                    <td><span class="book_info">{{ house.caution_deposit }}</span></td>
+                </tr>
+                <tr>
+                    <td>Number of Rooms</td>
+                    <td><span class="book_info">{{ house.number_of_rooms }}</span></td>
+                </tr>
+                <tr>
                     <td>Owner</td>
                     <td><a class="book_info" href="{{url_for('user', id=house.owner)}}">View Owner profile</span></td>
                 </tr>

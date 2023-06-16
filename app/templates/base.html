@@ -33,9 +33,9 @@
                 <li>
                     <a>
                         <span class="icon">
-                            <ion-icon name="home-sharp"></ion-icon>
+                            <ion-icon name="bed-outline"></ion-icon>
                         </span>
-                        <span class="title">Homey</span>
+                        <span class="title">homeY</span> <!--Arapey, Bukhari Script-->
                     </a>
                 </li>
                 {% if current_user.is_anonymous %}
@@ -51,7 +51,7 @@
                 <li>
                     <a href="{{ url_for('dashboard') }}">
                         <span class="icon">
-                            <ion-icon name="desktop-sharp"></ion-icon>
+                            <ion-icon name="home-sharp"></ion-icon>
                         </span>
                         <span class="title">Dashboard</span>
                     </a>
@@ -124,7 +124,7 @@
                     {% else %}
                     <a href="{{ url_for('user', id=current_user.id) }}">Profile 
                     {% endif %}
-                    <img src="{{ url_for('static', filename='img/user.jpg') }}" alt="Text">
+                    <img src="{{ current_user.avatar(128) }}" alt="Text">
                     </a>
                 </div>
             </div>

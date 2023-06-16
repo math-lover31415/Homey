@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, DecimalField, TextAreaField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, DecimalField, TextAreaField, SelectField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
 
 from app.models import User
@@ -35,4 +35,6 @@ class HouseForm(FlaskForm):
     address = TextAreaField('Address', validators=[DataRequired()])
     remarks = TextAreaField('Remarks', validators=[DataRequired()])
     rent = DecimalField('Rent per Month', validators=[DataRequired()])
+    caution_deposit = DecimalField('Caution Deposit', validators=[DataRequired()])
+    number_of_rooms = SelectField(choices=[('1BHK', '1BHK'), ('2BHK', '2BHK'), ('3BHK', '3BHK'), ('4BHK', '4BHK')])
     submit = SubmitField("Add")
