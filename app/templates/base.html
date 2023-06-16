@@ -65,6 +65,14 @@
                         <span class="title">Add House</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ url_for('settings') }}">
+                        <span class="icon">
+                            <ion-icon name="settings-sharp"></ion-icon>
+                        </span>
+                        <span class="title">Profile</span>
+                    </a>
+                </li>
                 {% endif %}
 
                 <li>
@@ -122,9 +130,9 @@
                     {% if current_user.is_anonymous %}
                     <a href="{{ url_for('login') }}">Login
                     {% else %}
-                    <a href="{{ url_for('user', id=current_user.id) }}">Profile 
+                    <a href="{{ url_for('user', id=current_user.id) }}">Profile
+                    <img src="{{ current_user.avatar(128) }}" alt="Text"> 
                     {% endif %}
-                    <img src="{{ current_user.avatar(128) }}" alt="Text">
                     </a>
                 </div>
             </div>

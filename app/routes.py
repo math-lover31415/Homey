@@ -6,6 +6,7 @@ from random import sample
 
 from app import app, db
 from app.forms import LoginForm,RegistrationForm, HouseForm
+from app.forms import EditProfileForm
 from app.models import User, House
 
 @app.route('/index')    
@@ -76,3 +77,24 @@ def user(id):
     user = User.query.filter_by(id=id).first_or_404()
     house_list = House.query.filter_by(owner=user.id)
     return render_template('user.html', user=user, house_list=house_list, title="%s's profile" % user.username)
+
+@app.route('/edit_profile', methods=['GET', 'POST'])
+@login_required
+def settings():
+    form = EditProfileForm()
+    if form.validate_on_submit():
+        current_user.username = form.username.data
+        current_user.about_me = form.about_me.data
+        db.session.commit()
+        flash('Your changes have been saved.')
+        return redirect(url_for('settings'))
+    elif request.method == 'GET':
+        form.username.data = current_user.username
+    return render_template('settings.html', title='Edit Profile', form=form)
+
+@app.route('/delete', methods=["GET"])
+def delete():
+    u = User.query.filter_by(id=current_user.id).first_or_404()
+    db.session.delete(u)
+    db.session.commit()
+    return redirect(url_for('logout'))
