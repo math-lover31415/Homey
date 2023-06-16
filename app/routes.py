@@ -3,8 +3,8 @@ from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
 
 from app import app, db
-from app.forms import LoginForm,RegistrationForm
-from app.models import User
+from app.forms import LoginForm,RegistrationForm, HouseForm
+from app.models import User, House
 
 @app.route('/index')    
 def index():
@@ -35,7 +35,7 @@ def logout():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('dashboard'))
     form = RegistrationForm()
     if form.validate_on_submit():
         user = User(username=form.username.data, email=form.email.data)
@@ -48,6 +48,17 @@ def register():
 
 @app.route('/')
 @app.route('/dashboard')
-@login_required
 def dashboard():
     return render_template('dash.html', title='Dashboard', titles=['Title'+str(n) for n in range(1, 11)])
+
+@app.route('/add', methods=['GET', 'POST'])
+@login_required
+def add():
+    form = HouseForm()
+    if form.validate_on_submit():
+        house = House(name=form.name.data, address=form.address.data, remarks=form.remarks.data, rent=int(form.rent.data))
+        db.session.add(house)
+        db.session.commit()
+        flash("House added")
+        return redirect(url_for('login'))
+    return render_template('add.html', form=form)

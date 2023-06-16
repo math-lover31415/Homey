@@ -33,7 +33,7 @@
                 <li>
                     <a>
                         <span class="icon">
-                            <ion-icon name="book-sharp"></ion-icon>
+                            <ion-icon name="home-sharp"></ion-icon>
                         </span>
                         <span class="title">Homey</span>
                     </a>
@@ -56,16 +56,16 @@
                         <span class="title">Dashboard</span>
                     </a>
                 </li>
-                {% endif %}
 
                 <li>
-                    <a href="#">
+                    <a href="{{ url_for('add') }}">
                         <span class="icon">
-                            <ion-icon name="book-sharp"></ion-icon>
+                            <ion-icon name="add-sharp"></ion-icon>
                         </span>
-                        <span class="title">Add</span>
+                        <span class="title">Add House</span>
                     </a>
                 </li>
+                {% endif %}
 
                 <li>
                     <a href="#">
