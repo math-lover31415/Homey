@@ -6,11 +6,6 @@ from app import app, db
 from app.forms import LoginForm,RegistrationForm
 from app.models import User
 
-@app.route("/")
-@app.route("/index")
-def index():
-    return render_template("index.html")
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
@@ -46,48 +41,3 @@ def register():
         flash('Congratulations, you are now a registered user!')
         return redirect(url_for('login'))
     return render_template('register.html', form=form)
-
-@app.route("/dashboard")
-def dashboard():
-    return render_template("dashboard.html")
-
-@app.route('/dropoff')
-def dropoff():
-    return render_template("dropoff.html")
-
-@app.route('/news')
-def news():
-    return render_template("news.html")
-
-@app.route('/notifications')
-def notifications():
-    return render_template("notifications.html")
-
-@app.route('/reedeem')
-def reedeem():
-    return render_template("reedeem.html")
-
-@app.route('/rewards')
-def rewards():
-    return render_template("rewards.html")
-
-@app.route('/schedule')
-def schedule():
-    return render_template("schedule.html")
-
-@app.route('/settings')
-def settings():
-    return render_template("settings.html")
-
-@app.route('/support')
-def support():
-    return render_template("support.html")
-
-@app.route('/booking')
-def booking():
-    return render_template("booking.html")
-
-@app.route('/user/<username>')
-def user(username):
-    user = User.query.filter_by(username=username).first_or_404()
-    return render_template("user.html", user=user)
