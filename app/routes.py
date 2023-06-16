@@ -50,4 +50,4 @@ def register():
 @app.route('/dashboard')
 @login_required
 def dashboard():
-    return render_template('dash.html', title='Dashboard')
+    return render_template('dash.html', title='Dashboard', titles=['Title'+str(n) for n in range(1, 11)])

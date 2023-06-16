@@ -2,6 +2,70 @@
 
 {% block content %}
 
-<!--Index page goes here-->
+<link rel="stylesheet" type="text/css" href="../static/styles/dash.css" />
+
+<!-- ======================= Cards ================== -->
+<div class="cardBox">
+    {% for num in range(8) %}
+    <a href="" class="btn-click">
+        <div class="card">
+            <div>
+                <div class="numbers">{{num+1}}</div>
+                <div class="cardName">Title</div>
+                info
+            </div>
+
+            <div class="iconBx">
+                <ion-icon name="newspaper-outline"></ion-icon>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+
+<!-- ================ Popular Books List ================= -->
+<div class="details">
+    <div class="popularbooks">
+        <div class="cardHeader">
+            <h2>Popular</h2>
+            <a href="/popular.html" class="btn">View All</a>
+        </div>
+
+    <table>
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>More Details</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for title in titles%}
+            <tr>
+                <td>{{ title }}</td>
+                    <td><a href="/book/{{ title }}" class="btn-click"><span class="status inProgress">View</span></a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- ================= Random space That needs to be changed================ -->
+<div class="recentCustomers">
+    <div class="cardHeader">
+        <h2>Recent View</h2>
+    </div>
+    {% for i in range(7,2,-1) %}
+    <table>
+        <tr>
+            <td width="60px">
+                <div class="imgBx"><img src="" alt=""></div>
+            </td>
+            <td>
+                <h4>Recent<br> <span></span></h4>
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+</div>
 
 {% endblock %}
