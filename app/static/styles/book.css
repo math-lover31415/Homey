@@ -1,0 +1,54 @@
+.details {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 30px;
+  /* margin-top: 10px; */
+}
+
+.details .Bookdetails {
+  position: relative;
+  display: grid;
+  min-height: 500px;
+  background: --white;
+  padding: 20px;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+}
+
+.details .cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.cardHeader h2 {
+  font-weight: 600;
+  color: --blue;
+}
+.details table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+.details .Bookdetails table tr {
+  color: --black1;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.details .Bookdetails table tr:last-child {
+  border-bottom: none;
+}
+.details .Bookdetails table tr td {
+  padding: 10px;
+}
+.details .Bookdetails table tr td:last-child {
+  text-align: end;
+}
+.book_info {
+  padding: 2px 4px;
+  color: --black1;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}

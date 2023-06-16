@@ -1,105 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-	<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
-	<link href="../static/Home.css" rel="stylesheet"/>
-	<script src="../static/home.js" type="text/javascript"></script>
-	<script defer src="calender.js"></script>
-	<link rel="icon" href="./logo-images/favicon.ico">
+    {% if title %}
+    <title>{{ title }} - Bibliomancer</title>
+    {% else %}
+    <title>Bibliomancer</title>
+    {% endif %}
+    <!-- ======= Styles ====== -->
+    <link rel="stylesheet" href="../static/styles/base.css">
+    <style>
+.btn-click{
+  text-decoration: none;
+}
+
+.btn-click:hover {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+    </style>
 </head>
+
 <body>
-    <div id="div1" class="div1 flex flex-col items-center w-[13%] pt-0 h-full overflow-hidden text-gray-400 bg-white ml-0 z-10 fixed">
-        <a class="flex items-center justify-center py-3" href="">
-            <img class=" w-28 mb-4" src="./logo-images/WRAP-yellow-logo.svg"  alt="logo">
-        </a>
-        <a class="flex items-center w-[150px] h-12 mb-2 hover:text-white hover:bg-[#FFCB0A] rounded-xl " href="{{url_for('dashboard')}}">
-            <div class=" flex py-4 pl-5 gap-2">
-                <img class="w-5 h-5" src="{{ url_for('static', filename='logo-images/Dashboard-nav.svg') }}">
-                <span class="text-md font-medium">Dasboard</span>
-            </div>
-        </a>
-        <a class="flex items-center w-[150px] h-12 mb-2 hover:text-white hover:bg-[#FFCB0A] rounded-xl" href="{{url_for('booking')}}">
-            <div class=" flex py-4 pl-4 gap-2">
-                <img class="w-6 h-6" src="./logo-images/Booking-nav.svg">
-                <span class="text-md font-medium">Bookings</span>
-            </div>
-        </a>
-        <a class="flex items-center w-[150px] h-12 mb-2 hover:text-white hover:bg-[#FFCB0A] rounded-xl" href="{{url_for('rewards')}}">
-            <div class=" flex py-4 pl-4 gap-2">
-                <img class="w-6 h-6" src="./logo-images/Rewards-nav.svg">
-                <span class="text-md font-medium">Rewards</span>
-            </div>
-        </a>
-        <a class="flex items-center w-[150px] h-12 mb-2 hover:text-white hover:bg-[#FFCB0A] rounded-xl" href="{{url_for('news')}}">
-            <div class=" flex py-4 pl-4 gap-2">
-                <img class="w-6 h-6" src="./logo-images/News-nav.svg">
-                <span class="text-md font-medium">News</span>
-            </div>
-        </a>
-        <a class="flex items-center w-[150px] h-12 mb-2 hover:text-white hover:bg-[#FFCB0A] rounded-xl" href="{{url_for('reedeem')}}">
-            <div class="flex py-4 pl-4 gap-2">
-                <img class="w-6 h-6" src="./logo-images/Redeem-nav.svg">
-                <span class="text-md font-medium">Redeem</span>
-            </div>
-        </a>
-        <a class="flex items-center w-[150px] h-12 mb-2 hover:text-white hover:bg-[#FFCB0A] absolute bottom-52 rounded-xl" href="{{ url_for('notifications') }}">
-            <div class=" flex py-4 pl-4 gap-2">
-                <img class="w-6 h-6" src="./logo-images/Notification-nav.svg">
-                <span class="text-md font-medium">Notification</span>
-            </div>
-        </a>
-        <a class="flex items-center w-[150px] h-12 mb-2 hover:text-white hover:bg-[#FFCB0A] absolute bottom-36 rounded-xl" href="{{url_for('support')}}">
-            <div class=" flex py-4 pl-4 gap-2">
-                <img class="w-6 h-6" src="./logo-images/Support-nav.svg">
-                <span class="text-md font-medium">Support</span>
-            </div>
-        </a>
-        <a class=" flex items-center w-[150px] h-12 mb-2 hover:text-white hover:bg-[#FFCB0A] absolute bottom-20 rounded-xl" href="{{url_for('settings')}}">
-            <div class=" flex py-4 pl-4 gap-2">
-                <img class="w-6 h-6" src="./logo-images/Settings.svg">
-                <span class="text-md font-medium">Settings</span>
-            </div>
-        </a>
-        <a class="flex items-center w-[150px] h-12 mb-2 hover:text-[#E45A5A] hover:bg-[#ffa8a8] absolute bottom-4 rounded-xl" href="{{url_for('logout')}}">
-            <div class=" flex py-4 pl-4 gap-2">
-                <img class="w-6 h-6 " src="./logo-images/Logout-nav.svg">
-                <span class="text-md font-medium">Logout</span>
-            </div>
-        </a>
-    </div>
-    <div class="header1 flex justify-between items-center w-[87%] h-[10%] bg-white fixed ml-[13%] mt-0 px-12 overflow-y-auto">
-        <div class="Home w-60 h-[6%]">
-            <h1 class="text-4xl font-bold"></h1>
+    <!-- =============== Navigation ================ -->
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a>
+                        <span class="icon">
+                            <ion-icon name="book-sharp"></ion-icon>
+                        </span>
+                        <span class="title">Bibliomancer</span>
+                    </a>
+                </li>
+                {% if current_user.is_anonymous %}
+                <li>
+                    <a href="{{ url_for('index') }}">
+                        <span class="icon">
+                            <ion-icon name="home"></ion-icon>
+                        </span>
+                        <span class="title">Home</span>
+                    </a>
+                </li>
+                {% else %}
+                <li>
+                    <a href="{{ url_for('dashboard') }}">
+                        <span class="icon">
+                            <ion-icon name="desktop-sharp"></ion-icon>
+                        </span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+                {% endif %}
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="book-sharp"></ion-icon>
+                        </span>
+                        <span class="title">Add Books</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="List-sharp"></ion-icon>
+                        </span>
+                        <span class="title">List</span>
+                    </a>
+                </li>
+                {% if current_user.is_anonymous %}
+                <li>
+                    <a href="{{ url_for('login') }}">
+                        <span class="icon">
+                            <ion-icon name="log-in-sharp"></ion-icon>
+                        </span>
+                        <span class="title">Sign In</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('register') }}">
+                        <span class="icon">
+                            <ion-icon name="person-add-sharp"></ion-icon>
+                        </span>
+                        <span class="title">Register</span>
+                    </a>
+                </li>
+                {% else %}
+                <li>
+                    <a href="{{ url_for('logout') }}">
+                        <span class="icon">
+                            <ion-icon name="log-out-sharp"></ion-icon>
+                        </span>
+                        <span class="title">Sign Out</span>
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
         </div>
-        <div class="flex justify-center items-center h-[6%] my-2 ml-0">
-            <input type="search" class="bg-purple-white relative w-96 shadow p-3 rounded-lg" placeholder="Search">
-            <div class="relative mr-4 right-8 text-black">
-                <img src="./logo-images/search-icon.png">
+        <!-- ========================= Main ==================== -->
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <ion-icon name="menu-sharp"></ion-icon>
+                </div>
+
+                <div class="search">
+                    <label>
+                        <input type="text" placeholder="Search here">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </label>
+                </div>
+
+                <div class="user">
+                    {% if current_user.is_anonymous %}
+                    <a href="{{ url_for('login') }}">Login
+                    {% else %}
+                    <a href="">Profile
+                    {% endif %}
+                    <img src="{{ url_for('static', filename='img/customer01.jpg') }}" alt="Text">
+                    </a>
+                </div>
             </div>
-            <div class="">
-                <a href="{{url_for('dropoff')}}" ><img class="w-12 h-12"  src="./logo-images/location-icon.svg"></a>
-            </div>
+
+            {% block content %}{% endblock %}
+
         </div>
-        <a class="flex gap-3 mt-0 mr-12"  href="url_for('user', username=current_user.username)">
-            <img class="rounded-[50%] h-12 w-12 " src="./logo-images/salih_profile.jpeg"/>
-            <div class="flex flex-col ">
-                <h1 class="font-medium">{{ current_user.username }}</h1>
-                <p class="text-sm">{{ current_user.id }}</p>
-            </div>
-        </a>
     </div>
-    <div class="flex flex-col flex-wrap items-center fixed bg-gray-50  w-[87%] h-[110%] ml-[13%] mt-[5.25%] gap-4  " >
-        <img class="mt-16" src="./logo-images/Home-img.svg">
-        <a href="">
-            <img src="./logo-images/Play Store.svg"/>
-        </a>
-    </div>
-    <div class= 'all-pages'> 
-    {% block content %}{% endblock %}
-    </div>
+</div>
+<script>
+    document.getElementById("searchInput").addEventListener("keyup", function(event) {
+    if (event.key === "Enter") {
+        var searchText = event.target.value;
+        
+        // Generate the URL using Flask's URL generation
+        var url = "/book/" + encodeURIComponent(searchText);
+        
+        // Perform the transfer to the generated URL
+        window.location.href = url;
+  }
+});
+</script>
+
+    <!-- =========== Scripts =========  -->
+    <script src="../static/main.js"></script>
+
+    <!-- ====== ionicons ======= -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
+
 </html>

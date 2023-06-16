@@ -6,6 +6,10 @@ from app import app, db
 from app.forms import LoginForm,RegistrationForm
 from app.models import User
 
+@app.route('/index')    
+def index():
+    return render_template('base.html')
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
@@ -41,3 +45,9 @@ def register():
         flash('Congratulations, you are now a registered user!')
         return redirect(url_for('login'))
     return render_template('register.html', form=form)
+
+@app.route('/')
+@app.route('/dashboard')
+@login_required
+def dashboard():
+    return render_template('dash.html', title='Dashboard')
