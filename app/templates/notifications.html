@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section id= 'Notifications' class="flex flex-col w-[87%] fixed h-[90%] bg-gray-50 ml-[13%] mt-[5%] gap-4 overflow-x-auto" >
+    <div class="Page-Title flex">
+        <h1 class="text-4xl font-bold pl-24 -mt-[3.5%] fixed">Notifications</h1>
+    </div>
+    <div class="flex flex-col gap-4 ml-24 mt-4">
+        <div class="bg-white w-[1000px] h-24 rounded-xl shadow-lg">
+            <div class="h-24 flex items-center">
+                <img class="ml-6 h-12 w-12" src="./logo-images/Trash-black.svg" alt=""/>
+                <div class="ml-6">
+                    <h1 class="text-xl font-semibold ">Your waste has been collected successfully</h1>
+                    <h1 class="text-sm font-normal">Track your waste in the Track Tab.</h1>
+                </div>
+            </div>
+        </div>
+        <div class="bg-white w-[1000px] h-24 rounded-xl shadow-lg">
+            <div class="h-24 flex items-center">
+                <img class="ml-6 h-12 w-12" src="./logo-images/Amazon.svg" alt=""/>
+                <div class="ml-6">
+                    <h1 class="text-xl font-semibold ">Offer Purchased - Amazon Gift card Rs. 50</h1>
+                    <h1 class="text-sm font-normal">Congratulations on purchasing Amazon Gift card Rs. 50</h1>
+                </div>
+            </div>
+        </div>
+        <div class="bg-white w-[1000px] h-24 rounded-xl shadow-lg">
+            <div class="h-24 flex items-center">
+                <img class="ml-6 h-14 w-14" src="./logo-images/Pickup-cancel-logo.svg" alt=""/>
+                <div class="ml-8">
+                    <h1 class="text-xl font-semibold ">Pickup Cancelled</h1>
+                    <h1 class="text-sm font-normal">Pickup requested for Plastic Waste has been cancelled.</h1>
+                </div>
+            </div>
+        </div>
+        <div class="bg-white w-[1000px] h-24 rounded-xl shadow-lg">
+            <div class="h-24 flex items-center">
+                <img class="ml-6 h-12 w-12" src="./logo-images/clock-black.svg" alt=""/>
+                <div class="ml-6">
+                    <h1 class="text-xl font-semibold ">Pickup Scheduled Successfully</h1>
+                    <h1 class="text-sm font-normal">Your pickup has been scheduled for today.</h1>
+                </div>
+            </div>
+        </div>
+        <button class="bg-[#009743] py-3 px-12 m-auto rounded-xl ml-0 mt-4 text-white font-lg">Clear</button>
+    </div>
+</section>
+
+{% endblock %}

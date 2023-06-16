@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section id= 'Settings' class="flex flex-col w-[87%] fixed h-[90%] bg-gray-50 ml-[13%] mt-[5%] gap-4 overflow-x-auto" >
+    <div class="Page-Title flex">
+        <h1 class="text-4xl font-bold pl-24 -mt-[3.5%] fixed">Settings</h1>
+    </div>
+    <div class="flex flex-col gap-4 ml-24">
+        <h1 class="text-2xl font-semibold my-4 text-left">Edit Profile</h1>
+        <div class="flex gap-4">
+            <div class="bg-white w-[550px] h-52 rounded-3xl shadow-lg">
+                <div class="flex h-1/2 w-[550px] items-center gap-0">
+                    <img class="rounded-[50%] h-16 w-16 ml-6" src="./logo-images/salih_profile.jpeg" alt="profile pic"/>
+                    <h1 class="font-xl text-xl ml-2">Update Picture</h1>
+                    <button class="py-2 px-3 m-auto bg-[#009743] rounded-lg text-white ml-14">Upload</button>
+                    <a href=""><h1 class="text-[#009743] font-semibold mr-14">Remove</h1></a>
+                </div>
+                <div class="flex gap-12 items-center px-6">
+                    <div class="w-1/2 h-full flex flex-col gap-2">
+                        <h1>First Name</h1>
+                        <input class="w-52 h-9 border-2 border-gray-500 rounded-md pl-1" type="text">
+                    </div>
+                    <div class="w-1/2 h-full flex flex-col gap-2">
+                        <h1>Last Name</h1>
+                        <input class="w-52 h-9 border-2 border-gray-500 rounded-md pl-1" type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white w-[450px] h-52 rounded-3xl shadow-lg">
+                <h1 class="font-xl ml-4 text-xl pl-2 py-4">Change password</h1>
+                <div class="flex gap-12 items-center px-6">
+                    <div class="w-1/2 h-full flex flex-col gap-2">
+                        <h1>Old password</h1>
+                        <input class="w-40 h-9 border-2 border-gray-500 rounded-md pl-1" type="text">
+                    </div>
+                    <div class="w-1/2 h-full flex flex-col gap-2">
+                        <h1>New password</h1>
+                        <input class="w-40 h-9 border-2 border-gray-500 rounded-md pl-1" type="text">
+                    </div>
+                </div>
+                <button class="py-2 px-3 ml-6 my-4 m-auto bg-[#009743] rounded-lg text-white">Update</button>
+            </div>
+        </div>
+        <div class="flex bg-white w-[1014px] h-24 rounded-xl shadow-lg">
+            <div class="flex flex-col justify-center ml-8">
+                <h1 class="text-xl font-semibold">Receive emails from WRAP ?</h1>
+                <h1>Subscribe to our newsletter.</h1>
+            </div>
+            <div class="w-16 mt-8 absolute right-64">
+                <label class="inline-flex relative items-center cursor-pointer">
+                    <input type="checkbox" value="" class="sr-only peer" checked>
+                    <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#009743]"></div>
+                </label>
+            </div>
+        </div>
+        <div class="bg-white w-[1014px] h-24 rounded-xl shadow-lg flex">
+            <div class="flex flex-col justify-center ml-8 h-24">
+                <h1 class="text-xl font-semibold">Delete Account</h1>
+                <h1>By deleting your account you will lose all your data.</h1>
+            </div>
+            <div class="h-24 flex items-center absolute right-64">
+                <a href=""><h1 class="text-red-600 font-semibold">Delete Account</h1></a>
+            </div>
+        </div>
+        <button class="py-2 ml-0 my-4 m-auto bg-[#009743] rounded-lg text-white px-3">Save changes</button>
+
+    </div>
+</section>
+
+{% endblock %}
