@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="../static/styles/user.css" />
+
+<div class="Userlist">
+    <div class="Userbooks">
+        <div class="cardHeader">
+            <h2>{{ title }}</h2>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Rent</td>
+                    <td>More Details</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for house in house_list %}
+                <tr>
+                    <td>{{ house.name }}</td>
+                    <td>{{ house.rent }}</td>
+                    <td><a href="/house/{{ house.id }}" class="btn-click"><span class="status inProgress">View House</span></a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="BookCover">
+        <div class="cardHeader">
+            <h2> Contact information </h2>
+        </div>
+        Contact {{ user.username }} at: {{ user.email }} for information regarding the pg
+    </div>
+</div>
+{% endblock %}

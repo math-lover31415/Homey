@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="../static/styles/book.css" />
+
+
+<div class="details">
+    <div class="Bookdetails">
+        <div class="cardHeader">
+            <h2>House: {{ house.name }}</h2>
+        </div>
+
+        <table>
+            <tbody>
+                <tr>
+                    <td>Named</td>
+                    <td><span class="book_info">{{ house.name }}</span></td>
+                </tr>
+
+                <tr>
+                    <td>Address</td>
+                    <td><span class="book_info">{{ house.address }}</span></td>
+                </tr>
+
+                <tr>
+                    <td>Remarks</td>
+                    <td><span class="book_info">{{ house.remarks }}</span></td>
+                </tr>
+
+                <tr>
+                    <td>Monthly Rent</td>
+                    <td><span class="book_info">{{ house.rent }}</span></td>
+                </tr>
+                <tr>
+                    <td>Owner</td>
+                    <td><a class="book_info" href="{{url_for('user', id=house.owner)}}">View Owner profile</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="BookCover">
+        <div class="cardHeader">
+            <h2> House Image </h2>
+        </div>
+        <img class="book-img" src="https://cdn1.goibibo.com/voy_ing/t_g/44ad2f98b6a011e89155027e8f969666.jpg" alt="">
+    </div>
+</div>
+
+{% endblock %}

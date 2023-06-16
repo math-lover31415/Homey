@@ -2,6 +2,8 @@ from flask import render_template, url_for, flash, redirect, request
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
 
+from random import sample
+
 from app import app, db
 from app.forms import LoginForm,RegistrationForm, HouseForm
 from app.models import User, House
@@ -25,7 +27,7 @@ def login():
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('dashboard')
         return redirect(next_page)
-    return render_template('login.html', form=form)
+    return render_template('login.html', form=form, title="Login")
 
 @app.route('/logout')
 def logout():
@@ -44,21 +46,32 @@ def register():
         db.session.commit()
         flash('Congratulations, you are now a registered user!')
         return redirect(url_for('login'))
-    return render_template('register.html', form=form)
+    return render_template('register.html', form=form, title="Register")
 
 @app.route('/')
 @app.route('/dashboard')
 def dashboard():
-    return render_template('dash.html', title='Dashboard', titles=['Title'+str(n) for n in range(1, 11)])
+    return render_template('dash.html', title='Dashboard', titles=sample(House.query.all(), 1))
 
 @app.route('/add', methods=['GET', 'POST'])
 @login_required
 def add():
     form = HouseForm()
     if form.validate_on_submit():
-        house = House(name=form.name.data, address=form.address.data, remarks=form.remarks.data, rent=int(form.rent.data))
+        house = House(name=form.name.data, address=form.address.data, remarks=form.remarks.data, rent=int(form.rent.data), owner=current_user.id)
         db.session.add(house)
         db.session.commit()
         flash("House added")
         return redirect(url_for('login'))
-    return render_template('add.html', form=form)
+    return render_template('add.html', form=form, title="Add Books")
+
+@app.route('/house/<id>')
+def house(id):
+    house = House.query.filter_by(id=id).first_or_404()
+    return render_template('house.html', house=house, title='View House')
+
+@app.route('/user/<id>')
+def user(id):
+    user = User.query.filter_by(id=id).first_or_404()
+    house_list = House.query.filter_by(owner=user.id)
+    return render_template('user.html', user=user, house_list=house_list, title="%s's profile" % user.username)

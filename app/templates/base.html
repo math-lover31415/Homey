@@ -122,9 +122,9 @@
                     {% if current_user.is_anonymous %}
                     <a href="{{ url_for('login') }}">Login
                     {% else %}
-                    <a href="">Profile
+                    <a href="{{ url_for('user', id=current_user.id) }}">Profile 
                     {% endif %}
-                    <img src="{{ url_for('static', filename='img/customer01.jpg') }}" alt="Text">
+                    <img src="{{ url_for('static', filename='img/user.jpg') }}" alt="Text">
                     </a>
                 </div>
             </div>

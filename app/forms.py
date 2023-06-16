@@ -31,7 +31,7 @@ class RegistrationForm(FlaskForm):
             raise ValidationError('Please use a different email address.')
         
 class HouseForm(FlaskForm):
-    name = StringField('Full Name', validators=[DataRequired()])
+    name = StringField('Name', validators=[DataRequired()])
     address = TextAreaField('Address', validators=[DataRequired()])
     remarks = TextAreaField('Remarks', validators=[DataRequired()])
     rent = DecimalField('Rent per Month', validators=[DataRequired()])

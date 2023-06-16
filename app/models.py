@@ -25,7 +25,7 @@ class House(db.Model):
     address = db.Column(db.String(256))
     remarks = db.Column(db.String(128))
     rent = db.Column(db.BigInteger)
-
+    owner = db.Column(db.Integer)
     def __repr(self):
         return 'User{}'.format(self.id)
     
