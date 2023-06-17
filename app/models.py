@@ -36,7 +36,7 @@ class House(db.Model):
     caution_deposit = db.Column(db.Integer)
     owner = db.Column(db.Integer)
     def __repr(self):
-        return 'User{}'.format(self.id)
+        return '<House {}>'.format(self.id)
     
 
 @login.user_loader

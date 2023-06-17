@@ -52,7 +52,7 @@ def register():
 @app.route('/')
 @app.route('/dashboard')
 def dashboard():
-    return render_template('dash.html', title='Dashboard', titles=sample(House.query.all(), 1))
+    return render_template('dash.html', title='Dashboard', titles=[])
 
 @app.route('/add', methods=['GET', 'POST'])
 @login_required
