@@ -9,9 +9,6 @@ from app.forms import LoginForm,RegistrationForm, HouseForm
 from app.forms import EditProfileForm
 from app.models import User, House
 
-@app.route('/index')    
-def index():
-    return render_template('base.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -33,7 +30,7 @@ def login():
 @app.route('/logout')
 def logout():
     logout_user()
-    return redirect(url_for('index'))
+    return redirect(url_for('dashboard'))
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
