@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="../static/styles/dash.css" />
+
+<!-- ================ Popular Books List ================= -->
+<div class="details">
+    <div class="popularbooks">
+        <div class="cardHeader">
+            <h2>Search Results for: {{query}}</h2>
+        </div>
+
+    <table>
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Address</td>
+                <td>Rent</td>
+                <td>Number of Rooms</td>
+                <td>More details</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for house in results %}
+            <tr>
+                <td>{{ house.name }}</td>
+                <td>{{ house.address }}</td>
+                <td>{{ house.rent }}</td>
+                <td>{{ house.number_of_rooms }}</td>
+                <td><a href="/house/{{ house.id }}" class="btn-click"><span class="status inProgress">View</span></a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

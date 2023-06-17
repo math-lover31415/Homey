@@ -120,10 +120,12 @@
                 </div>
 
                 <div class="search">
-                    <label>
-                        <input type="text" placeholder="Search here">
-                        <ion-icon name="search-outline"></ion-icon>
-                    </label>
+                    <form action="{{url_for('search')}}">
+                        <label>
+                            <input type="text" name="query" placeholder="Search here">
+                            <button type="submit"><ion-icon name="search-outline"></ion-icon></button>
+                        </label>
+                    </form>
                 </div>
 
                 <div class="user">

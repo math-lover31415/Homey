@@ -49,7 +49,7 @@ def register():
 @app.route('/')
 @app.route('/dashboard')
 def dashboard():
-    return render_template('dash.html', title='Dashboard', titles=[])
+    return render_template('dash.html', title='Dashboard', titles=sample(House.query.all(),1))
 
 @app.route('/add', methods=['GET', 'POST'])
 @login_required
@@ -101,3 +101,17 @@ def delete():
 @app.route('/all_books')
 def all_books():
     return render_template('popular.html', titles=House.query.all())
+
+@app.route('/search', methods=["GET","POST"])
+def search():
+    query = request.args.get('query', '')
+
+    results = House.query.filter(
+        db.or_(
+            House.name.ilike(f'%{query}%'),
+            House.address.ilike(f'%{query}%'),
+            House.remarks.ilike(f'%{query}%'),
+            House.number_of_rooms.ilike(f'%{query}%')
+        )
+    ).all()
+    return render_template('search.html', query=query, results=results)
