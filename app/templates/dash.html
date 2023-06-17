@@ -144,7 +144,7 @@
     <table>
         <tr>
             <td width="60px">
-                <div class="imgBx"><img src="{{ user.avatar(128) }}" alt=""></div>
+                <div class="imgBx"><a href="{{url_for('user', id=user.id)}}"><img src="{{ user.avatar(128) }}" alt=""></a></div>
             </td>
             <td>
                 <h4>{{ user.username }}<br></h4>
