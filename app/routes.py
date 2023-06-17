@@ -47,6 +47,10 @@ def register():
     return render_template('register.html', form=form, title="Register")
 
 @app.route('/')
+@app.route('/index')
+def index():
+    return render_template('index.html', title='Index')
+
 @app.route('/dashboard')
 def dashboard():
     titles = House.query.all()

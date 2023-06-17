@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link rel="shortcut icon" href="https://www.cyberdudenetworks.com/client-login/assets/images/favicon.png"
+type="image/x-icon">
+
+<!-- Google fonts-->
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700%7COpen+Sans&display=swap" />
+
+<!-- Libraries -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Custom styling -->
+<link rel="stylesheet" href="{{url_for('static', filename='styles/index.css')}}">
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles/book.css')}}" />
+
+
+<div class="wrapper">
+        <!-- Main Content -->
+        <div class="content">
+            <div class="hero-info m-50" style="flex-basis: 640px;">
+                <h1>Affordable Furnished <span class="locale"><br>Homes & PGs</span></h1>
+                <p>Discover affordable and cheap paying guest accommodations and homes that fit your budget. Explore our wide range of options, offering comfort and convenience without breaking the bank. Find your perfect place today!</p>
+                <a class="btn btn-outline" href="/login" target="_blank"> <i
+                        class="fa fa-lock"></i> Login</a>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
