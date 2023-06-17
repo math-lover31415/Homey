@@ -40,10 +40,17 @@
                     <td>Number of Rooms</td>
                     <td><span class="book_info">{{ house.number_of_rooms }}</span></td>
                 </tr>
+                {% if current_user.id == house.owner %}
+                <tr>
+                    <td>Remove Property</td>
+                    <td><a class="book_info" href="{{url_for('delete_house', id=house.id)}}">Delete House</a></td>
+                </tr>
+                {% else %}
                 <tr>
                     <td>Owner</td>
-                    <td><a class="book_info" href="{{url_for('user', id=house.owner)}}">View Owner profile</span></td>
+                    <td><a class="book_info" href="{{url_for('user', id=house.owner)}}">View Owner Profile</a></td>
                 </tr>
+                {% endif %}
             </tbody>
         </table>
     </div>

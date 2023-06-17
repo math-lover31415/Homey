@@ -98,6 +98,15 @@ def delete():
     db.session.commit()
     return redirect(url_for('logout'))
 
+@app.route('/delete_house')
+def delete_house():
+    id = request.args.get('id', None)
+    house = House.query.filter_by(id=id).first_or_404()
+    if house.owner == current_user.id:
+        db.session.delete(house)
+        db.session.commit()
+    return redirect(url_for('dashboard'))
+
 @app.route('/all_books')
 def all_books():
     return render_template('popular.html', titles=House.query.all())
