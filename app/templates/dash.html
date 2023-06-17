@@ -4,23 +4,110 @@
 
 <link rel="stylesheet" type="text/css" href="../static/styles/dash.css" />
 <!-- ======================= Cards ================== -->
+{% if current_user.is_anonymous %}
 <div class="cardBox">
-    {% for num in range(8) %}
     <a href="" class="btn-click">
         <div class="card">
             <div>
-                <div class="numbers">{{num+1}}</div>
-                <div class="cardName">Title</div>
-                info
+                <div class="numbers">0</div>    
+                <div class="cardName">Revenue</div>
             </div>
 
             <div class="iconBx">
-                <ion-icon name="newspaper-outline"></ion-icon>
+                <ion-icon name="cash-outline"></ion-icon>
             </div>
         </div>
     </a>
-    {% endfor %}
+    <a href="" class="btn-click">
+        <div class="card">
+            <div>
+                <div class="numbers">0</div>    
+                <div class="cardName">Properties</div>
+            </div>
+
+            <div class="iconBx">
+                <ion-icon name="home-outline"></ion-icon>
+            </div>
+        </div>
+    </a>
+    <a href="" class="btn-click">
+        <div class="card">
+            <div>
+                <div class="numbers">0</div>    
+                <div class="cardName">Dues</div>
+            </div>
+
+            <div class="iconBx">
+                <ion-icon name="card-outline"></ion-icon>
+            </div>
+        </div>
+    </a>
+    <a href="" class="btn-click">
+        <div class="card">
+            <div>
+                <div class="numbers">0</div>    
+                <div class="cardName">Views</div>
+            </div>
+
+            <div class="iconBx">
+                <ion-icon name="eye-outline"></ion-icon>
+            </div>
+        </div>
+    </a>
 </div>
+{% else %}
+<div class="cardBox">
+    <a href="" class="btn-click">
+        <div class="card">
+            <div>
+                <div class="numbers">1</div>    
+                <div class="cardName">Revenue</div>
+            </div>
+
+            <div class="iconBx">
+                <ion-icon name="cash-outline"></ion-icon>
+            </div>
+        </div>
+    </a>
+    <a href="" class="btn-click">
+        <div class="card">
+            <div>
+                <div class="numbers">{{ house_list|length }}</div>
+                <div class="cardName">Properties</div>
+            </div>
+
+            <div class="iconBx">
+                <ion-icon name="home-outline"></ion-icon>
+            </div>
+        </div>
+    </a>
+    <a href="" class="btn-click">
+        <div class="card">
+            <div>
+                <div class="numbers">1</div>    
+                <div class="cardName">Dues</div>
+            </div>
+
+            <div class="iconBx">
+                <ion-icon name="card-outline"></ion-icon>
+            </div>
+        </div>
+    </a>
+    <a href="" class="btn-click">
+        <div class="card">
+            <div>
+                <div class="numbers">1</div>    
+                <div class="cardName">Views</div>
+            </div>
+
+            <div class="iconBx">
+                <ion-icon name="eye-outline"></ion-icon>
+            </div>
+        </div>
+    </a>
+</div>
+{% endif %}
+
 
 <!-- ================ Popular Books List ================= -->
 <div class="details">
