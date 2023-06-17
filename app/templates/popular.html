@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="../static/styles/dash.css" />
+
+<!-- ================ Popular Books List ================= -->
+<div class="details">
+    <div class="popularbooks">
+        <div class="cardHeader">
+            <h2>All Houses</h2>
+        </div>
+
+    <table>
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>More Details</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for house in titles %}
+            <tr>
+                <td>{{ house.name }}</td>
+                    <td><a href="/house/{{ house.id }}" class="btn-click"><span class="status inProgress">View</span></a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

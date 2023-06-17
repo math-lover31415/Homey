@@ -60,7 +60,7 @@ def add():
     form = HouseForm()
     if form.validate_on_submit():
         house = House(name=form.name.data, address=form.address.data, remarks=form.remarks.data, rent=int(form.rent.data),\
-                      number_of_rooms=form.number_of_rooms.data, owner=current_user.id, caution_deposit=form.caution_deposit.data)
+                      number_of_rooms=form.number_of_rooms.data, owner=current_user.id, caution_deposit=int(form.caution_deposit.data))
         db.session.add(house)
         db.session.commit()
         flash("House added")
@@ -95,6 +95,12 @@ def settings():
 @app.route('/delete', methods=["GET"])
 def delete():
     u = User.query.filter_by(id=current_user.id).first_or_404()
+    for h in House.query.filter_by(owner=u.id):
+        db.session.delete(h)
     db.session.delete(u)
     db.session.commit()
     return redirect(url_for('logout'))
+
+@app.route('/all_books')
+def all_books():
+    return render_template('popular.html', titles=House.query.all())
