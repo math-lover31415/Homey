@@ -49,7 +49,15 @@ def register():
 @app.route('/')
 @app.route('/dashboard')
 def dashboard():
-    return render_template('dash.html', title='Dashboard', titles=sample(House.query.all(),1))
+    titles = House.query.all()
+    users = User.query.all()
+    if current_user.is_authenticated:
+        houses = House.query.filter_by(owner=current_user.id)
+        revenue = sum(house.rent for house in houses)
+        properties = sum(1 for house in houses)
+        return render_template('dash.html', title='Dashboard', titles=titles, users=users, revenue=revenue, properties=properties)
+    else:
+        return render_template('dash.html',title="Home", titles=titles, users=users)
 
 @app.route('/add', methods=['GET', 'POST'])
 @login_required

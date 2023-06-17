@@ -60,7 +60,7 @@
     <a href="" class="btn-click">
         <div class="card">
             <div>
-                <div class="numbers">1</div>    
+                <div class="numbers">{{revenue}}</div>    
                 <div class="cardName">Revenue</div>
             </div>
 
@@ -72,7 +72,7 @@
     <a href="" class="btn-click">
         <div class="card">
             <div>
-                <div class="numbers">{{ house_list|length }}</div>
+                <div class="numbers">{{ properties }}</div>
                 <div class="cardName">Properties</div>
             </div>
 
@@ -109,7 +109,7 @@
 {% endif %}
 
 
-<!-- ================ Popular Books List ================= -->
+<!-- ================ Popular Houses List ================= -->
 <div class="details">
     <div class="popularbooks">
         <div class="cardHeader">
@@ -138,16 +138,19 @@
 <!-- ================= Random space That needs to be changed================ -->
 <div class="recentCustomers">
     <div class="cardHeader">
-        <h2>Recent View</h2>
+        <h2>Popular PG Owners</h2>
     </div>
-    {% for i in range(7,2,-1) %}
+    {% for user in users %}
     <table>
         <tr>
             <td width="60px">
                 <div class="imgBx"><img src="" alt=""></div>
             </td>
             <td>
-                <h4>Recent<br> <span></span></h4>
+                <h4>{{ user.username }}<br></h4>
+            </td>
+            <td>
+                <h4>{{ user.email }}<br></h4>
             </td>
         </tr>
     {% endfor %}
